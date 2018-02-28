@@ -1,0 +1,84 @@
+.menu {
+text-align: center;
+}
+  .menu h1 {
+    margin-top: 3%;
+  }
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("images/background.jpeg");
+  /* background-color: rgba(107,70,109,0.6); */
+}
+.btn-group {
+  margin-top: 10px;
+  text-align: center;
+}
+  .btn-group button {
+    background-color: #4CAF50; /* Green background */
+    border: 1px solid green; /* Green border */
+    color: white; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: center; /* Float the buttons side by side */
+  }
+  .btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+  }
+
+  /* Clear floats (clearfix hack) */
+  .btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  /* Add a background color on hover */
+  .btn-group button:hover {
+    background-color: #3e8e41;
+  }
+
+.image_canvas {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(240,248,255,0.4);
+  width: 40%;
+  max-height: 40%;
+  border-radius: 15px;
+  
+}
+  .game .answer .choice {
+    background-color: rgba(74, 252, 193, 0.8); /* Green background */
+    color: white; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: center; /* Float the buttons side by side */
+  }
+#question_image {
+  padding: 5%;
+  max-width: 90%;
+  max-height: 90%;
+}
+#choice1 {
+  grid-area: "choice1"
+}
+#choice2 {
+  grid-area: "choice2"
+}
+#choice3 {
+  grid-area: "choice3"
+}
+#choice4 {
+  grid-area: "choice4"
+}
+.answer {
+  display: grid;
+  grid-template-areas:
+    "choice1 choice2"
+    "choice3 choice4";
+  grid-gap: 10px;
+  background-color: rgba(240,248,255,0.4);
+  padding: 10px;
+  margin-top: 5%;
+}

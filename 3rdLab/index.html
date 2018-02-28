@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <link rel="stylesheet" href="progressBar.min.css" />
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script src="progressBar.js"></script>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="menu" id="menu_block">
+      <h1>Quiz Time!!!</h1>
+      <h3>Here lie a pop quiz specially pick for you by ME (Arut Thanomwatana 5710546437)</h3>
+      <h3>Stop hesitating choose the catagories & number of question and let the quiz BEGIN!!!!</h3>
+      <h2>Select the catagory & amount of question</h2>
+      <form id="numQuestion">
+        <input type="radio" name="amount" value=5>5 question
+        <input type="radio" name="amount" value=10>10 question
+        <input type="radio" name="amount" value=15>15 question
+      </form>
+      <div class="btn-group">
+        <button class="catagory" id="academic">Academic</button>
+        <button class="catagory" id="ske12">SKE12</button>
+      </div>
+    </div>
+    <div class="game" id="game_canvas" style="display: none">
+      <div class="question">
+          <h1 id="question_text"></h1>
+          <div class="cssProgress">
+            <div class="progress1">
+              <div id="timeBar" class="cssProgress-bar cssProgress-active-right" data-percent="100" style="width: 100%;">
+                <span class="cssProgress-label" id="timeLabel"></span>
+              </div>
+            </div>
+          </div>
+          <div class="image_canvas">
+            <img id="question_image" src="">
+          </div>
+        </div>
+        <div class="answer">
+          <button class="choice" id = "choice1">
+            Choice 1
+          </button>
+          <button class="choice" id = "choice2">
+            Choice 2
+          </button>
+          <button class="choice" id = "choice3">
+            Choice 3
+          </button>
+          <button class="choice" id = "choice4">
+            Choice 4
+          </button>
+        </div>
+    </div>
+    <div class="Summary" id="summary_canvas" style="display: none">
+      <h1>You got <strong id="summary_score"></strong> score.</h1>
+      <h1>You got <strong id="summary_mark_correct"></strong> question correct and <strong id="summary_mark_incorrect"></strong> question wrong.</h1>
+      <h1>You use <strong id="summary_time"></strong> seconds for this quiz.</h1>
+      <h1>You use <strong id="summary_average"></strong> seconds average for this question </h1>
+      <button id="to_menu">Back to Menu</button>
+    </div>
+  </div>
+</body>
+</html>
+<script>
+  var questions = []
+  var questionNo = 0;
+  var catagory = ""
+  var solution = ""
+  var self = this
+  var summary = {
+    score: 0,
+    mark: [],
+    timeEachQuestion: []
+  }
+  var timeInterval;
+  var timeLeft = 0;
+  var questionIndexString = ""
+  var numberOfQuestions = 0
+  var allQuestion = []
+  
+  $(".choice").on("click", (event) => {
+    $(".choice").attr("disabled", "disabled")
+    summary.timeEachQuestion.push(questions[questionIndexString[questionNo]].time - timeLeft)
+    clearInterval(timeInterval)
+    if(checkAnswer(event.target.value)) {
+      summary.score += timeLeft;
+      summary.mark.push(true)
+      $(event.target).attr("style", "background-color: rgba(0, 255, 0, 0.8);")
+    } else {
+      summary.mark.push(false)
+      $(event.target).attr("style", "background-color: rgba(255, 0, 0, 0.8);")
+    }
+    setTimeout(() => {
+      if(!isLastQuestion()) {
+        self.onStartQuestion(questions[questionIndexString[++questionNo]])
+      } else {
+        gameEnd()
+      }
+      $(event.target).attr("style","background-color: rgba(74, 252, 193, 0.8);")
+    }, 1000)
+    
+  })
+  $(document).ready(() => {
+    loadJSON('quiz.json', (data) => {
+      allQuestion = JSON.parse(data)
+    })
+  })
+  $(".catagory").on("click", (event) => {
+    if (numberOfQuestions < 5) {
+      alert("Please Select the number of question")
+      return
+    }
+    $("#menu_block").hide();
+    $("#game_canvas").show();
+    catagory = event.target.id
+    console.log(catagory)
+    questions = fetchQuestions(catagory)
+    console.log(questions)
+    questionIndexString = randomQuestions()
+
+    onStartQuestion(questions[questionIndexString[questionNo]])
+  })
+  
+  $('#numQuestion input').on('change', () => {
+    numberOfQuestions = $('input[name=amount]:checked', '#numQuestion').val() 
+  })
+  $('.exit').on("click", (event) => {
+    gameEnd()
+  })
+  $("#to_menu").on("click", () => {
+    $("#summary_canvas").hide()
+    $("#menu_block").show()
+  })
+
+  function onStartQuestion(data) {
+    let randomChoices = self.randomChoices()
+    $("#question_text").text(`${questionNo + 1}. ${data.question}`)
+    if(data.src)
+      $("#question_image").attr("src", `images/${this.catagory}/${data.src}`)
+    else
+      $("#question_image").attr("src", ``)
+    for(let i = 0; i<4; i++) {
+      $(`#choice${i+1}`).text(`${data.choices[randomChoices[i]]}`)
+      $(`#choice${i+1}`).val(`${data.choices[randomChoices[i]]}`)
+      $(`#choice${i+1}`).attr("score", data.score)
+      $(`#choice${i+1}`).removeAttr("disabled")
+    }
+    solution = data.answer
+    timeLeft = data.time
+    setTimeBar(data.time)
+    timeInterval = setInterval(() => {
+      timeLeft--;
+      if (timeLeft<0) {
+        clearInterval(timeInterval)
+        if(!isLastQuestion()){
+          onStartQuestion(questions[questionIndexString[++questionNo]])
+        }
+        else {
+          gameEnd()
+        }
+      }
+      self.setTimeBar(data.time)
+    }, 1000)
+  }
+  function fetchQuestions(catagory) {
+    let copy = allQuestion[catagory].slice()
+    console.log(copy)
+    let questions = []
+    for(let i = 0; i< numberOfQuestions; i++) {
+      let index = Math.floor(Math.random() * copy.length)
+      questions.push(copy.splice(index, 1)[0])
+    }
+    return questions
+  }
+  function setTimeBar(maxTime) {
+    $("#timeBar").attr("style", `width: ${timeLeft/maxTime*100}%;`)
+    $("#timeLabel").text(`${timeLeft} s`)
+  }
+  function isLastQuestion() {
+    return questionNo >= questions.length - 1
+  }
+  function checkAnswer(answer) {
+    return answer === solution
+  }
+  function randomQuestions() {
+    let allString = ""
+    for(let i = 0; i<questions.length; i++) {
+      allString+=i
+    }
+    return scramble(allString)
+  }
+  function randomChoices() {
+    return scramble("0123")
+  }
+  function scramble(word) {
+    let char1 = Math.floor(Math.random() * word.length) + 0
+    let char2 = Math.floor(Math.random() * word.length) + 0
+    while(char1 === char2) {
+      char2 = Math.floor(Math.random() * word.length) + 0
+    }
+    let newWord = ""
+    for (let i = 0; i < word.length; i++) {
+      if (word[i] === word[char1]) {
+        newWord = newWord + word[char2]
+      }
+      else if (word[i] === word[char2]) {
+        newWord = newWord + word[char1]
+      }
+      else {
+        newWord = newWord + word[i]
+      }
+    }
+    return newWord
+  }
+  function gameEnd() {
+    clearInterval(timeInterval)
+    $("#summary_score").text(self.summary.score)
+    $("#summary_mark_correct").text(self.summary.mark.filter((data) => {
+      return data
+    }).length)
+    $("#summary_mark_incorrect").text(self.summary.mark.filter((data) => {
+      return !data
+    }).length)
+    $("#summary_time").text(self.summary.timeEachQuestion.reduce((prev, curr, index, array) => {
+       return prev+=curr
+    }))
+    $("#summary_average").text(self.summary.timeEachQuestion.reduce((prev, curr, index, array) => {
+       return prev+=curr
+    })/self.summary.timeEachQuestion.length)
+    $("#game_canvas").hide()
+    $("#summary_canvas").show()
+    // alert("Game End : " + score)
+    // $("#menu_block").show()
+    questionNo = 0
+    self.summary.score = 0
+    self.summary.mark = []
+    self.summary.timeEachQuestion = []
+    questions = []
+  }
+  function loadJSON(fileName, callback) {
+    var xobj = new XMLHttpRequest();
+    xobj.overrideMimeType("application/json");
+    xobj.open('GET', fileName, true);
+    xobj.onreadystatechange = function() {
+      if (xobj.readyState === 4 && xobj.status === 200) {
+          // .open will NOT return a value but simply returns undefined in async mode so use a callback
+          callback(xobj.responseText);
+
+      }
+    }
+    xobj.send(null);
+
+  }
+</script>

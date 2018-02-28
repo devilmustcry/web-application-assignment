@@ -1,0 +1,314 @@
+{
+  "academic" : [{
+    "no": 1,
+    "question": "1+1 = ?",
+    "choices": ["2", "11", "l+l", "999"],
+    "answer": "2",
+    "src": null,
+    "choiceType": "text",
+    "time": 5
+  },
+  {
+    "no": 2,
+    "question": "2 + 2 is 4 minus 1 that...",
+    "choices": ["3", "4", "2", "Quick Math!!!"],
+    "answer": "3",
+    "src": null,
+    "choiceType": "text",
+    "time": 5
+  },
+  {
+    "no": 3,
+    "question": "Bitcoin has crash down 50% since last month.If Bitcoin value is 600000 Baht last month, What is it value now?",
+    "choices": ["300,000", "420,000", "260,000", "1,000,000"],
+    "answer": "300,000",
+    "src": null,
+    "choiceType": "text",
+    "time": 10
+  },
+  {
+    "no": 4,
+    "question": "Rate of drop Legendary drop card is 0.03% how much card we need to get from pack before we should get 1 legendary drop?",
+    "choices": ["3333.33333", "6666.66666", "333.33333", "33.33333"],
+    "answer": "3333.33333",
+    "src": null,
+    "choiceType": "text",
+    "time": 10
+  },
+  {
+    "no": 5,
+    "question": "Calculate the area of the rectangle with 4 x 5 metre and half circle with radius of 3 metre",
+    "choices": ["20+(9/2*Pi) metre", "20+(9/2*Pi) centimetre", "20+(9*Pi) metre", "None of the above"],
+    "answer": "20+(9/2*Pi) metre",
+    "src": "question5.png",
+    "choiceType": "text",
+    "time": 10
+  },
+  {
+    "no": 6,
+    "question": "Which angle should the cannon shoot to cover the greatest distance?",
+    "choices": ["45 degree", "30 degree", "60 degree", "180 degree"],
+    "answer": "45 degree",
+    "src": null,
+    "choiceType": "text",
+    "time": 10
+  },
+  {
+    "no": 7,
+    "question": "Which color of light can travel furthest?",
+    "choices": ["Red", "Purple", "Orange", "Blue"],
+    "answer": "Red",
+    "src": "question7.png",
+    "choiceType": "text",
+    "time": 10
+  },
+  {
+    "no": 8,
+    "question": "Which animal has the longest live?",
+    "choices": ["Jellyfish", "Turtle", "Elephant", "Cockroach"],
+    "answer": "Jellyfish",
+    "src": null,
+    "choiceType": "text",
+    "time": 10
+  },
+  {
+    "no": 9,
+    "question": "Some month have day 31th, some month have day 30th, how many month day 28th?",
+    "choices": ["1", "7", "12", "8"],
+    "answer": "12",
+    "src": null,
+    "choiceType": "text",
+    "time": 10
+  },
+  {
+    "no": 10,
+    "question": "When it young, it has 4 legs. When it grow-up, it has 2 legs. When it old, it has 3 legs. What is it?",
+    "choices": ["Human", "Dog", "Frog", "Snake"],
+    "answer": "Human",
+    "src": null,
+    "choiceType": "text",
+    "time": 10
+  },
+  {
+    "no": 11,
+    "question": "What color must be added to yellow to make orange?",
+    "choices": ["Red", "Yellow", "Green", "Blue"],
+    "answer": "Red",
+    "src": null,
+    "choiceType": "text",
+    "time": 10
+  },
+  {
+    "no": 12,
+    "question": "Which continent has lowest population.",
+    "choices": ["Artic", "Atlantic", "Europe", "Africa"],
+    "answer": "Artic",
+    "src": null,
+    "choiceType": "text",
+    "time": 10
+  },
+  {
+    "no": 13,
+    "question": "Which country eat most fish?",
+    "choices": ["Japan", "Ireland", "Korean", "Thailand"],
+    "answer": "Japan",
+    "src": null,
+    "choiceType": "text",
+    "time": 10
+  },
+  {
+    "no": 14,
+    "question": "Cowboy always duel at high noon. What time exactly is high noon?",
+    "choices": ["12:00 PM", "13:00 PM", "11:00 AM", "12:00 AM"],
+    "answer": "12:00 PM",
+    "src": null,
+    "choiceType": "text",
+    "time": 10
+  },
+  {
+    "no": 15,
+    "question": "Which is the highest mountain?",
+    "choices": ["Inthanon", "Everest", "Chang", "All of the above"],
+    "answer": "Everest",
+    "src": null,
+    "choiceType": "text",
+    "time": 10
+  },
+  {
+    "no": 16,
+    "question": "What is Water chemical formula?",
+    "choices": ["H2O", "CO2", "O3", "HCl"],
+    "answer": "H2O",
+    "src": null,
+    "choiceType": "text",
+    "time": 10
+  },
+  {
+    "no": 17,
+    "question": "'It's start with one thing. I don't know why. It doesn't even matter how hard you try...' Which song is this?",
+    "choices": ["In The End", "Numb", "Heavy", "Faint"],
+    "answer": "In The End",
+    "src": null,
+    "choiceType": "text",
+    "time": 10 
+  },
+  {
+    "no": 18,
+    "question": "What is the probability of 6-face-die to face 7?",
+    "choices": ["0", "1/6", "1/12", "1/24"],
+    "answer": "0",
+    "src": null,
+    "choiceType": "text",
+    "time": 10 
+  },
+  {
+    "no": 19,
+    "question": "Your sister is half as old when you are six, now your are thirty. How old is she",
+    "choices": ["15", "27", "30", "3"],
+    "answer": "27",
+    "src": null,
+    "choiceType": "text",
+    "time": 10 
+  },
+  {
+    "no": 20,
+    "question": "Which is not a sword?",
+    "choices": ["Katana", "Rapier", "Scimatar", "Katar"],
+    "answer": "Katar",
+    "src": null,
+    "choiceType": "text",
+    "time": 10 
+  },
+  {
+    "no": 21,
+    "question": "'What is done cannot be undone.' Where is this phrase comefrom?",
+    "choices": ["Dark Soul", "Bayonetta", "Devil May Cry", "Megaman"],
+    "answer": "Dark Soul",
+    "src": null,
+    "choiceType": "text",
+    "time": 10 
+  }],
+  "ske12" : [{
+    "no": 1,
+    "question": "Who is he/she?",
+    "choices": ["Salilthopung", "Tangmo", "Khomkim", "Ossas"],
+    "answer": "Uveveveveve Onyeteyevue Ossas",
+    "src": "question1.jpg",
+    "choiceType": "text",
+    "time": 10
+  },
+  {
+    "no": 2,
+    "question": "Who has surname 'Khomkim'? ",
+    "choices": ["Gun", "Zen", "Paii", "Safe"],
+    "answer": "Gun",
+    "src": null,
+    "choiceType": "text",
+    "time": 10
+  },
+  {
+    "no": 3,
+    "question": "What is his/her nickname?",
+    "choices": ["Palmy", "Trong", "Momay", "Prang"],
+    "answer": "Palmy",
+    "src": "question3.jpg",
+    "choiceType": "text",
+    "time": 10
+  }, {
+    "no": 4,
+    "question": "Who is not from Bangkok?",
+    "choices": ["Nut", "Trong", "Gun", "Net"],
+    "answer": "Gun",
+    "src": null,
+    "choiceType": "text",
+    "time": 10
+  }, {
+    "no": 5,
+    "question": "Who is SKE12 Head?",
+    "choices": ["Net", "Not", "Paii", "Boss"],
+    "answer": "Net",
+    "src": null,
+    "choiceType": "text",
+    "time": 10
+  }, {
+    "no": 6,
+    "question": "Who is SKE12 Deputy Head?",
+    "choices": ["Net", "Not", "Paii", "Boss (Pocky)"],
+    "answer": "Paii",
+    "src": null,
+    "choiceType": "text",
+    "time": 10
+  }, {
+    "no": 7,
+    "question": "Who is SKE12 Tresurer?",
+    "choices": ["Trong/Boss (Pocky)", "Not/Zen", "Nut/Tae", "Jame/Ung"],
+    "answer": "Trong/Boss",
+    "src": null,
+    "choiceType": "text",
+    "time": 10
+  }, {
+    "no": 8,
+    "question": "How many Ex-Girlfriend Tan have",
+    "choices": ["2^0", "2^1", "2^2", "2^3"],
+    "answer": "2^1",
+    "src": null,
+    "choiceType": "text",
+    "time": 10
+  }, {
+    "no": 9,
+    "question": "Who have surname 'Kluaythes'",
+    "choices": ["Game", "Jame", "Zen", "Peak"],
+    "answer": "Game",
+    "src": null,
+    "choiceType": "text",
+    "time": 10
+  }, {
+    "no": 10,
+    "question": "Who is American Standard's friend?",
+    "choices": ["Peter", "Boss (Pocky)", "Kanoon", "Tan"],
+    "answer": "Peter",
+    "src": null,
+    "choiceType": "text",
+    "time": 10
+  }, {
+    "no": 11,
+    "question": "Who like to sing Vitas's song most?",
+    "choices": ["Safe/Oat", "Trong/Safe", "Oat/Paii", "Trong/Paii"],
+    "answer": "Safe/Oat",
+    "src": null,
+    "choiceType": "text",
+    "time": 10
+  }, {
+    "no": 12,
+    "question": "Who is the youtuber?",
+    "choices": ["Mind", "Trong", "Peak", "Zen"],
+    "answer": "Mind",
+    "src": null,
+    "choiceType": "text",
+    "time": 10
+  }, {
+    "no": 13,
+    "question": "Who is Bitcoin master?",
+    "choices": ["Jub", "Paii", "Trong", "Nut"],
+    "answer": "Jub",
+    "src": null,
+    "choiceType": "text",
+    "time": 10
+  }, {
+    "no": 14,
+    "question": "What is Jub real name?",
+    "choices": ["Warata", "Jub", "Jay", "Golf"],
+    "answer": "Jub",
+    "src": null,
+    "choiceType": "text",
+    "time": 10
+  }, {
+    "no": 15,
+    "question": "Who make this quiz?",
+    "choices": ["Trong", "Trong", "Trong", "Trong"],
+    "answer": "Trong",
+    "src": null,
+    "choiceType": "text",
+    "time": 10
+  }]
+}
